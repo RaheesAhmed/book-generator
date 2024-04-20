@@ -60,10 +60,6 @@ Fill out the form on the home page with your desired book details such as title,
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-### Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-
 To contribute to this project, follow these steps:
 
 1. Fork the Project
