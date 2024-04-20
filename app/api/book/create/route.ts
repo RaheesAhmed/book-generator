@@ -49,7 +49,7 @@ const generateBook = async (bookDetails) => {
             { "role": "user", "content":`Generate a book on given details: ${bookPrompt}` },
         ],
         //response_format: { type: "json_object" },
-        model: "gpt-3.5-turbo-0125",
+        model: "gpt-3.5-turbo-16k",
     });
 
     
