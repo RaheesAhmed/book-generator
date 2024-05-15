@@ -49,16 +49,17 @@ const generateBook = async (bookDetails) => {
             { "role": "user", "content":`Generate a book on given details: ${bookPrompt}` },
         ],
         //response_format: { type: "json_object" },
-        model: "gpt-3.5-turbo-16k",
+        model: "gpt-4o",
     });
 
     
     const res = completion.choices[0].message.content;
     //console.log({res});
+   
     return res;
 };
 
-function createBookPrompt(details) {
+const  createBookPrompt=async(details)=> {
     return `Title: ${details.Title} ,
     Genre: ${details.Genre} ,
     Language: ${details.Language} ,
@@ -74,3 +75,6 @@ function createBookPrompt(details) {
     Chapter_Details: ${details.Chapter_Details}
     `;
 }
+
+
+
