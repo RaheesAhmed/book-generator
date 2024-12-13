@@ -1,56 +1,143 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 142.1 76.2% 36.3%;
-    --secondary-foreground: 355.7 100% 97.3%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 48 97% 50%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    --font-heading: "CabinetGrotesk-Variable", sans-serif;
+    --font-body: "Gambetta-Variable", serif;
+    --font-mono: "JetBrainsMono", monospace;
   }
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 142.1 70.6% 45.3%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 48 95% 53%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+
+  /* Base Styles */
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply bg-paper-100 text-ink-800 font-body text-base leading-relaxed;
+  }
+
+  /* Typography Scale */
+  h1,
+  .h1 {
+    @apply font-heading text-4xl font-bold tracking-tight text-ink-900;
+  }
+
+  h2,
+  .h2 {
+    @apply font-heading text-3xl font-bold tracking-tight text-ink-900;
+  }
+
+  h3,
+  .h3 {
+    @apply font-heading text-2xl font-semibold tracking-tight text-ink-900;
+  }
+
+  h4,
+  .h4 {
+    @apply font-heading text-xl font-semibold tracking-tight text-ink-900;
+  }
+
+  p,
+  .body {
+    @apply font-body text-base text-ink-800;
+  }
+
+  .small {
+    @apply font-body text-sm text-ink-600;
+  }
+
+  .tiny {
+    @apply font-body text-xs text-ink-600;
+  }
+
+  .hero-text {
+    @apply font-heading text-hero font-bold tracking-tight text-ink-900;
   }
 }
-@layer base {
-  * {
-    @apply border-border;
+
+@layer components {
+  /* Button Variants */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-medium transition-base rounded-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg rounded-sm;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm rounded-sm;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-paper-300 text-ink-800 hover:bg-paper-200 focus:ring-paper-300;
+  }
+
+  .btn-outline {
+    @apply btn border border-ink-400 text-ink-800 hover:bg-paper-200 focus:ring-ink-400;
+  }
+
+  /* Card Variants */
+  .card {
+    @apply bg-paper-100 border border-[rgb(0_0_0/0.1)] rounded shadow-sm transition-base;
+  }
+
+  .card-hover {
+    @apply hover:border-[rgb(0_0_0/0.15)] hover:shadow hover:-translate-y-0.5;
+  }
+
+  /* Form Elements */
+  .input {
+    @apply w-full px-4 py-3 rounded bg-paper-300 border border-[rgb(0_0_0/0.1)] text-ink-800 placeholder-ink-400
+           focus:border-accent-500 focus:ring-4 focus:ring-accent-100
+           disabled:opacity-50 disabled:pointer-events-none
+           transition-base;
+  }
+
+  .label {
+    @apply block mb-2 text-sm font-medium text-ink-800;
+  }
+
+  /* Container */
+  .container {
+    @apply w-[min(100%-3rem,80rem)] mx-auto;
+  }
+
+  .prose {
+    @apply max-w-[65ch] mx-auto;
+  }
+}
+
+@layer utilities {
+  /* Transitions */
+  .transition-fast {
+    @apply transition-all duration-fast ease-[cubic-bezier(0.4,0,0.2,1)];
+  }
+
+  .transition-base {
+    @apply transition-all duration-base ease-[cubic-bezier(0.4,0,0.2,1)];
+  }
+
+  .transition-slow {
+    @apply transition-all duration-slow ease-[cubic-bezier(0.4,0,0.2,1)];
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    @apply animate-[fade-in_0.5s_ease-out];
+  }
+
+  .animate-slide-up {
+    @apply animate-[slide-up_0.5s_ease-out];
+  }
+
+  .animate-slide-down {
+    @apply animate-[slide-down_0.5s_ease-out];
   }
 }

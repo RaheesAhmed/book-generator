@@ -1,74 +1,25 @@
-import "@/app/globals.css";
-import { Inter, DM_Sans } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
-import { Providers } from "@/components/providers";
-import { SITE_CONFIG } from "@/lib/constants";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-});
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { poppins, jetbrainsMono } from "./fonts";
+import "./globals.css";
 
 export const metadata = {
-  title: {
-    default: SITE_CONFIG.name,
-    template: `%s | ${SITE_CONFIG.name}`,
-  },
-  description: SITE_CONFIG.description,
-  keywords: [
-    "AI",
-    "Book Creation",
-    "Writing",
-    "Artificial Intelligence",
-    "Story Generation",
-    "Creative Writing",
-  ],
-  authors: [
-    {
-      name: "Your Name",
-      url: "https://your-website.com",
-    },
-  ],
-  creator: "Your Name",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: SITE_CONFIG.url,
-    title: SITE_CONFIG.name,
-    description: SITE_CONFIG.description,
-    siteName: SITE_CONFIG.name,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SITE_CONFIG.name,
-    description: SITE_CONFIG.description,
-    images: [SITE_CONFIG.ogImage],
-    creator: "@yourusername",
-  },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  title: "StoryForge - AI-Powered Book Writing Platform",
+  description:
+    "Transform your ideas into beautifully crafted books using artificial intelligence.",
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${dmSans.variable} font-sans antialiased`}
-      >
-        <Providers>
-          {children}
-          <Analytics />
-        </Providers>
+    <html lang="en" className={`${poppins.variable} ${jetbrainsMono.variable}`}>
+      <body className="min-h-screen flex flex-col">
+        <SiteHeader />
+        <main className="flex-1">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );
